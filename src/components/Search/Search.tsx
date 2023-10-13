@@ -1,4 +1,5 @@
 import { Component, ChangeEvent } from "react";
+import "./Search.css";
 
 class Search extends Component {
   constructor(props: Record<string, never> | Readonly<Record<string, never>>) {
@@ -50,10 +51,10 @@ class Search extends Component {
               this.handleChange(event)
             }
           />
-          <button type="submit" className="search__btn">
-            Search
-          </button>
         </form>
+        <button type="submit" className="search__btn">
+          Search
+        </button>
       </div>
     );
   }
