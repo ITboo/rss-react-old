@@ -6,7 +6,13 @@ class Header extends Component {
   render() {
     return (
       <div className="header">
-        <h1 className="header__title">POKEMANIA</h1>
+        <a href="#">
+          <img
+            src="../../../public/logo.png"
+            alt="logo"
+            className="header__logo"
+          />
+        </a>
         <Search />
       </div>
     );

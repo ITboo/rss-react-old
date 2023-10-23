@@ -7,7 +7,7 @@
     "dev": "vite",
     "build": "tsc && vite build",
     "lint": "node node_modules/eslint/bin/eslint.js ./src",
-    "lint:fix": "node node_modules/eslint/bin/eslint.js ./src --fix",
+    "format:fix": "node node_modules/eslint/bin/eslint.js ./src --fix",
     "prettier": "prettier --write .",
     "preview": "vite preview"
   },

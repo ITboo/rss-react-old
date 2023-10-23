@@ -1,13 +1,18 @@
-.header{
+.header {
     display: flex;
     justify-content: space-between;
     position: relative;
     align-items: center;
-    padding: 80px 100px;
+    padding: 50px 100px;
     background-color: red;
     border-bottom: solid black 20px;
+
 }
 
-.header__title{
+.header__logo {
+    position: static;
+}
+
+.header__title {
     font-size: 48px;
 }
