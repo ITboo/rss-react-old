@@ -1,4 +1,4 @@
-import { Component, ReactNode } from "react";
+import { Component } from "react";
 import "./Err.css";
 
 export class Err extends Component {
@@ -6,7 +6,7 @@ export class Err extends Component {
     throw new Error("Ooops. En error occured");
   };
 
-  render(): ReactNode {
+  render() {
     return (
       <button
         title="throw error"

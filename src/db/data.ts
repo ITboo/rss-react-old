@@ -1,6 +1,6 @@
-import { CardData } from "../types/types";
+import { CardItem } from "../types/types";
 
-export const data: CardData[] = [
+export const data: CardItem[] = [
   {
     id: 1,
     name: "1",
