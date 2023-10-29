@@ -1,6 +1,6 @@
 import { Component } from "react";
 import "./Main.css";
-import CardList from "../CardList/CardList";
+import CardList from "../../components/CardList/CardList";
 
 class Main extends Component {
   render() {

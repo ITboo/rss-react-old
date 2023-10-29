@@ -1,4 +1,4 @@
-import { CardData } from "./types";
+import { CardData } from "../types/types";
 
 export const data: CardData[] = [
   {

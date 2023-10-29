@@ -1,8 +1,10 @@
 import { Component } from "react";
 import "./App.css";
 import Header from "./components/Header/Header";
-import Main from "./components/Main/Main";
+import Main from "./pages/Main/Main";
+
 import ErrorBoundary from "../src/providers/ErrorBoundary";
+import { Err } from "./providers/Err/Err";
 
 class App extends Component {
   constructor(props: object) {
@@ -14,12 +16,13 @@ class App extends Component {
   }
   render() {
     return (
-      <div className="container">
-        <Header />
-        <ErrorBoundary>
+      <ErrorBoundary>
+        <div className="container">
+          <Header />
+          <Err />
           <Main />
-        </ErrorBoundary>
-      </div>
+        </div>
+      </ErrorBoundary>
     );
   }
 }

@@ -47,6 +47,7 @@ class Search extends Component {
             id="search"
             name="searchValue"
             value={this.state.searchValue}
+            autoFocus={true}
             onChange={(event: ChangeEvent<HTMLInputElement>) =>
               this.handleChange(event)
             }

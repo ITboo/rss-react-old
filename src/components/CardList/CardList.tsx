@@ -1,7 +1,7 @@
 import { Component } from "react";
 
 import Card from "../Card/Card";
-import { data } from "../../types/data";
+import { data } from "../../db/data";
 import { CardData } from "../../types/types";
 
 import "./CardList.css";
