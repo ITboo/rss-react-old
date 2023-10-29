@@ -1,11 +1,15 @@
-import { Component, ChangeEvent } from "react";
+import { Component, FormEvent, createRef } from "react";
 import "./Search.css";
 
-class Search extends Component {
-  constructor(props: Record<string, never> | Readonly<Record<string, never>>) {
+type SearchProps = {
+  searchValue: string;
+  handleSubmit: (value: string) => void;
+};
+
+class Search extends Component<SearchProps> {
+  private searchRef = createRef<HTMLInputElement>();
+  constructor(props: SearchProps) {
     super(props);
-    this.handleSubmit = this.handleSubmit.bind(this);
-    this.handleChange = this.handleChange.bind(this);
   }
   state = JSON.parse(localStorage.getItem("formData") || "{}");
 
@@ -23,20 +27,13 @@ class Search extends Component {
     this.setLocalStorage();
   }
 
-  handleChange(event: ChangeEvent<HTMLInputElement>) {
-    this.setState({ searchValue: event.target.value });
-    this.setLocalStorage();
-  }
-
-  handleSubmit(event: { preventDefault: () => void }): void {
-    event.preventDefault();
-    this.setLocalStorage();
-  }
-
   setLocalStorage(): void {
     localStorage.setItem("formData", JSON.stringify(this.state));
   }
-
+  handleSubmit = (e: FormEvent) => {
+    e.preventDefault();
+    this.props.handleSubmit(this.searchRef.current?.value || "");
+  };
   render() {
     return (
       <div className="search__wrapper">
@@ -46,14 +43,16 @@ class Search extends Component {
             className="search__input"
             id="search"
             name="searchValue"
-            value={this.state.searchValue}
+            ref={this.searchRef}
+            value={this.props.searchValue}
             autoFocus={true}
-            onChange={(event: ChangeEvent<HTMLInputElement>) =>
-              this.handleChange(event)
-            }
           />
         </form>
-        <button type="submit" className="search__btn">
+        <button
+          type="submit"
+          className="search__btn"
+          onClick={this.handleSubmit.bind(this)}
+        >
           Search
         </button>
       </div>
