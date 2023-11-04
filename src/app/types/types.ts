@@ -21,3 +21,20 @@ export interface CharacterLocation {
 export interface CharactersProps {
   data: Character[];
 }
+export interface CharacterProps {
+  data: Character;
+}
+
+export interface CharacterData {
+  info?: {
+    count: number;
+    pages: number;
+    next: string | null;
+    prev: string | null;
+  };
+  results?: Character[];
+}
+
+export interface SearchProps {
+  setSearch: (value: string) => void;
+}

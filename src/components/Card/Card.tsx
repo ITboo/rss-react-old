@@ -1,15 +1,13 @@
-import { Character } from "../../app/types/types";
-function Card(data: Character) {
-  const { image, gender, name } = data;
+import "./Card.css";
+
+import { CharacterProps } from "../../app/types/types";
+function Card({ data }: CharacterProps) {
+  const { image, name } = data;
 
   return (
     <div className="card">
-      <div
-        className="card__img"
-        style={{ backgroundImage: `url(${image})` }}
-      ></div>
+      <img className="card__img" src={image} />
       <div className="card__info">
-        <div className="card__info-gender">{gender}</div>
         <div className="card__info-title">{name}</div>
       </div>
     </div>

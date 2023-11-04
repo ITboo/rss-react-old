@@ -3,10 +3,10 @@ import "./Header.css";
 function Header() {
   return (
     <header className="header">
-      <h1 className="header__logo">Test</h1>
-      <ul className="header__nav">
-        <li>Home</li>
-        <li>Description</li>
+      <img src="../../../public/logo.png" alt="logo" className="header__logo" />
+      <ul className="header__menu">
+        <li className="menu__item">Home</li>
+        <li className="menu__item">Description</li>
       </ul>
     </header>
   );
