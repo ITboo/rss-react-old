@@ -1,30 +1,19 @@
-import { Component } from "react";
-import "./App.css";
-import Header from "./components/Header/Header";
-import Main from "./pages/Main/Main";
+import Header from "../shared/Header/Header";
+import Footer from "../shared/Footer/Footer";
+import HomePage from "../pages/HomePage/HomePage";
 
-import ErrorBoundary from "../src/providers/ErrorBoundary";
-import { Err } from "./providers/Err/Err";
+import ErrorBoundary from "./providers/ErrorBoundary";
 
-class App extends Component {
-  constructor(props: object) {
-    super(props);
-    this.state = {
-      cards: [],
-      value: localStorage.getItem("value") || "",
-    };
-  }
-  render() {
-    return (
-      <ErrorBoundary>
-        <div className="container">
-          <Header />
-          <Err />
-          <Main />
-        </div>
-      </ErrorBoundary>
-    );
-  }
+import "./styles/App.css";
+
+function App() {
+  return (
+    <ErrorBoundary>
+      <Header />
+      <HomePage />
+      <Footer />
+    </ErrorBoundary>
+  );
 }
 
 export default App;
