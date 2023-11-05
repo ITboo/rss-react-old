@@ -1,0 +1,8 @@
+.about{
+    display: flex;
+    justify-content: space-between;
+    gap: 50px;
+    width: 1000px;
+    margin: 0 auto 80px;
+    font-size: 20px;
+}
