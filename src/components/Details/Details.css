@@ -1,21 +1,33 @@
 .modal,
 .modal__overlay {
     position: fixed;
-    top: 0;
+    bottom: 0;
     left: 0;
-    height: 100%;
+    height: 81%;
     width: 100%;
 }
 
+.modal__overlay {
+    backdrop-filter: blur(2px);
+    z-index: 1;
+}
+.modal__wrapper {
+    z-index: 3;
+}
 .modal {
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: right;
 }
 
 .details-card {
+    position: absolute;
+    top: 0;
+    right: 0;
+    margin-right: 100px;
     width: 300px;
     background-color: #fff;
+    border: solid 1px yellowgreen;
 }
 
 .details-card__wrapper {
@@ -27,6 +39,7 @@
 
 .close-btn {
     display: flex;
+    margin-right: 10px;
     justify-content: right;
     cursor: pointer;
     font-size: 18px;

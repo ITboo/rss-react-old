@@ -1,6 +1,8 @@
+import "./AboutPage.css";
+
 function AboutPage() {
   return (
-    <main className="main">
+    <main className="about">
       <p className="about__text">
         The series follows the misadventures of alcoholic scientist Rick and his
         overly nervous grandson Morty, who split their time between domestic
@@ -10,6 +12,12 @@ function AboutPage() {
         way! This extremely clever show will blow your mind as well as all other
         parallel realities of your mind!
       </p>
+      <img
+        src="../../../public/img.jpg"
+        alt="about"
+        className="about__img"
+        width="350px"
+      />
     </main>
   );
 }

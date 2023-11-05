@@ -7,8 +7,18 @@ function Header() {
     <header className="header">
       <img src="../../../public/logo.png" alt="logo" className="header__logo" />
       <div className="header__menu">
-        <NavLink to="/">Home</NavLink>
-        <NavLink to="/about">Description</NavLink>
+        <NavLink
+          to="/"
+          style={{ color: "yellowgreen", textDecoration: "none" }}
+        >
+          Home
+        </NavLink>
+        <NavLink
+          to="/about"
+          style={{ color: "yellowgreen", textDecoration: "none" }}
+        >
+          Description
+        </NavLink>
       </div>
     </header>
   );

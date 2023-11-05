@@ -49,28 +49,29 @@ function HomePage() {
   const currentPosts = data.slice(firstPostIndex, lastPostIndex);
 
   return (
-    <main className="main">
-      <Search setSearch={setSearch} />
-      {isLoading ? (
-        <Loader />
-      ) : data.length === 0 ? (
-        <NotFoundPage />
-      ) : (
-        <CardList data={currentPosts} openModal={openModal} />
-      )}
-      <Pagination
-        totalPosts={data.length}
-        postsPerPage={postsPerPage}
-        currentPage={currentPage}
-        setCurrentPage={setCurrentPage}
-      />
-
+    <>
+      <main className="main">
+        <Search setSearch={setSearch} />
+        {isLoading ? (
+          <Loader />
+        ) : data.length === 0 ? (
+          <NotFoundPage />
+        ) : (
+          <CardList data={currentPosts} openModal={openModal} />
+        )}
+        <Pagination
+          totalPosts={data.length}
+          postsPerPage={postsPerPage}
+          currentPage={currentPage}
+          setCurrentPage={setCurrentPage}
+        />
+      </main>
       {isModalOpen && (
         <Details setModal={setModal}>
           <DetailsInfo setModal={setModal} cardId={modalId} />
         </Details>
       )}
-    </main>
+    </>
   );
 }
 

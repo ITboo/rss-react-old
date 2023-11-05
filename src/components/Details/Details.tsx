@@ -7,7 +7,7 @@ export interface DetailsProps {
   setModal: () => void;
 }
 
-function Modal({ children, setModal }: DetailsProps) {
+function Details({ children, setModal }: DetailsProps) {
   return (
     <div className="modal">
       <div className="modal__overlay" onClick={setModal}></div>
@@ -16,4 +16,4 @@ function Modal({ children, setModal }: DetailsProps) {
   );
 }
 
-export default Modal;
+export default Details;
