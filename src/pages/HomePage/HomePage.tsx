@@ -7,6 +7,8 @@ import { Character, CharacterData } from "../../app/types/types";
 
 import { API_URL } from "../../app/constants/constants";
 import Pagination from "../../components/Pagination/Pagination";
+import Loader from "../../shared/Loader/Loader";
+import NotFoundPage from "../NotFoundPage/NotFoundPage";
 
 function HomePage() {
   const [search, setSearch] = useState(
@@ -15,7 +17,7 @@ function HomePage() {
   const [data, setData] = useState<Character[]>([]);
   const [currentPage, setCurrentPage] = useState(1);
   const [postsPerPage] = useState<number>(6);
-
+  const [isLoading, setIsLoading] = useState(true);
   useEffect(() => {
     (async () => {
       try {
@@ -25,6 +27,7 @@ function HomePage() {
       } catch (err) {
         console.log(err);
       }
+      setIsLoading(false);
     })();
   }, [search]);
 
@@ -35,7 +38,13 @@ function HomePage() {
   return (
     <main className="main">
       <Search setSearch={setSearch} />
-      <CardList data={currentPosts} />
+      {isLoading ? (
+        <Loader />
+      ) : data.length === 0 ? (
+        <NotFoundPage />
+      ) : (
+        <CardList data={currentPosts} />
+      )}
       <Pagination
         totalPosts={data.length}
         postsPerPage={postsPerPage}
