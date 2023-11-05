@@ -2,6 +2,8 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
+    margin: 0 auto 10px;
+    width: 1000px;
     gap: 20px;
     padding-top: 20px;
 }
@@ -14,6 +16,7 @@
 .card__img{
     transition: all ease 0.3s;
     margin-bottom: 5px;
+    width: 250px;
 }
 .card__img:hover{
     transform: scale(1.05);
