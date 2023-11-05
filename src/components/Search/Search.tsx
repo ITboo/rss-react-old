@@ -36,7 +36,7 @@ function Search({ setSearch }: SearchProps) {
           setInputValue(e.target.value)
         }
       />
-      <button>Search</button>
+      <button className="search-btn">Search</button>
     </form>
   );
 }

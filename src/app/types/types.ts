@@ -20,9 +20,11 @@ export interface CharacterLocation {
 
 export interface CharactersProps {
   data: Character[];
+  openModal: (id: number) => void;
 }
 export interface CharacterProps {
   data: Character;
+  openModal: (id: number) => void;
 }
 
 export interface CharacterData {

@@ -2,13 +2,16 @@ import { useEffect, useState } from "react";
 
 import Search from "../../components/Search/Search";
 import CardList from "../../components/CardList/CardList";
+import Pagination from "../../components/Pagination/Pagination";
+import Loader from "../../shared/Loader/Loader";
+import NotFoundPage from "../NotFoundPage/NotFoundPage";
 
 import { Character, CharacterData } from "../../app/types/types";
 
 import { API_URL } from "../../app/constants/constants";
-import Pagination from "../../components/Pagination/Pagination";
-import Loader from "../../shared/Loader/Loader";
-import NotFoundPage from "../NotFoundPage/NotFoundPage";
+
+import Details from "../../components/Details/Details";
+import DetailsInfo from "../../components/Details/DetailsInfo";
 
 function HomePage() {
   const [search, setSearch] = useState(
@@ -18,6 +21,9 @@ function HomePage() {
   const [currentPage, setCurrentPage] = useState(1);
   const [postsPerPage] = useState<number>(6);
   const [isLoading, setIsLoading] = useState(true);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [modalId, setModalId] = useState(0);
+
   useEffect(() => {
     (async () => {
       try {
@@ -31,6 +37,13 @@ function HomePage() {
     })();
   }, [search]);
 
+  const openModal = (id: number) => {
+    setIsModalOpen(true);
+    setModalId(id);
+  };
+
+  const setModal = () => setIsModalOpen(false);
+
   const lastPostIndex = currentPage * postsPerPage;
   const firstPostIndex = lastPostIndex - postsPerPage;
   const currentPosts = data.slice(firstPostIndex, lastPostIndex);
@@ -43,7 +56,7 @@ function HomePage() {
       ) : data.length === 0 ? (
         <NotFoundPage />
       ) : (
-        <CardList data={currentPosts} />
+        <CardList data={currentPosts} openModal={openModal} />
       )}
       <Pagination
         totalPosts={data.length}
@@ -51,6 +64,12 @@ function HomePage() {
         currentPage={currentPage}
         setCurrentPage={setCurrentPage}
       />
+
+      {isModalOpen && (
+        <Details setModal={setModal}>
+          <DetailsInfo setModal={setModal} cardId={modalId} />
+        </Details>
+      )}
     </main>
   );
 }

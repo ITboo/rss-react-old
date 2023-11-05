@@ -1,4 +1,4 @@
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { BrowserRouter, Outlet, Route, Routes } from "react-router-dom";
 
 import Header from "../shared/Header/Header";
 import Footer from "../shared/Footer/Footer";
@@ -22,7 +22,7 @@ function App() {
           <Route path="about" element={<AboutPage />} />
           <Route path="404" element={<NotFoundPage />} />
         </Routes>
-
+        <Outlet />
         <Footer />
       </ErrorBoundary>
     </BrowserRouter>
