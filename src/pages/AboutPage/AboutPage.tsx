@@ -2,7 +2,7 @@ import "./AboutPage.css";
 
 function AboutPage() {
   return (
-    <main className="about">
+    <main className="about" data-testid="about-page">
       <p className="about__text">
         The series follows the misadventures of alcoholic scientist Rick and his
         overly nervous grandson Morty, who split their time between domestic

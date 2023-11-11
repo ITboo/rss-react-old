@@ -17,7 +17,7 @@ function App() {
           <Route path="/" element={<Layout />}>
             <Route index element={<HomePage />} />
             <Route path="about" element={<AboutPage />} />
-            <Route path="404" element={<NotFoundPage />} />
+            <Route path="*" element={<NotFoundPage />} />
           </Route>
         </Routes>
       </ErrorBoundary>
