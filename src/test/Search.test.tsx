@@ -30,7 +30,8 @@ describe("Search", () => {
 
   describe("Search", () => {
     const value = "test";
-    const spySetQuery = vi.spyOn(localStorage, "setItem");
+    const spy = vi.spyOn(localStorage, "setItem");
+    localStorage.setItem = vi.fn();
     const setSearch = vi.fn();
     it("verifies that clicking the Search button saves the entered value to the local storage", async () => {
       const { getByRole } = render(
@@ -48,8 +49,8 @@ describe("Search", () => {
 
       fireEvent.click(button);
 
-      expect(spySetQuery).toHaveBeenCalledTimes(1);
-      expect(spySetQuery).toHaveBeenCalledWith("test");
+      expect(spy).toHaveBeenCalledTimes(1);
+      expect(spy).toHaveBeenCalledWith("test");
     });
   });
 });

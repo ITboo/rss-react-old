@@ -32,8 +32,8 @@ function DetailsInfo({ cardId, setModal }: DetailsProps) {
     <Loader />
   ) : data ? (
     <>
-      <div className="details-card">
-        <div className="close-btn" onClick={setModal}>
+      <div className="details-card" data-testid="modal-card">
+        <div className="close-btn" onClick={setModal} data-testid="close">
           ✖
         </div>
         <div className="details-card__wrapper">
