@@ -65,4 +65,11 @@ describe("Details", () => {
     fireEvent.click(closeBtn);
     expect(modal).toBeUndefined;
   });
+
+  it("checks that a loading indicator is displayed while fetching data;", async () => {
+    const modal = await waitFor(() => screen.getByTestId("modal-card"));
+
+    expect(modal).toBeInTheDocument();
+    expect(screen.queryByTestId("loader")).toBeDefined();
+  });
 });
