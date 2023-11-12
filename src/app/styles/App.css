@@ -1,0 +1,11 @@
+:root{
+    margin: 0 auto;
+    padding: 0;
+    max-width: 1200px;
+}
+
+ul{
+    display: flex;
+    gap: 20px;
+    list-style: none;
+}

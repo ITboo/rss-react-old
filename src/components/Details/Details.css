@@ -1,0 +1,51 @@
+.modal,
+.modal__overlay {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    height: 81%;
+    width: 100%;
+}
+
+.modal__overlay {
+    backdrop-filter: blur(2px);
+    z-index: 1;
+}
+.modal__wrapper {
+    z-index: 3;
+}
+.modal {
+    display: flex;
+    align-items: center;
+    justify-content: right;
+}
+
+.details-card {
+    position: absolute;
+    top: 0;
+    right: 0;
+    margin-right: 100px;
+    width: 300px;
+    background-color: #fff;
+    border: solid 1px yellowgreen;
+}
+
+.details-card__wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    text-align: center;
+}
+
+.close-btn {
+    display: flex;
+    margin-right: 10px;
+    justify-content: right;
+    cursor: pointer;
+    font-size: 18px;
+    color: yellowgreen;
+}
+
+.close-btn:hover {
+    color: rgb(90, 155, 177);
+}
