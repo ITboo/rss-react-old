@@ -1,13 +1,8 @@
 import { Character } from "./types";
 
 interface AppState {
-  charactersList?: Character[];
-  nextPage?: null | string;
-  previousPage?: null | string;
-  loading?: boolean;
-  query?: string;
-  error?: boolean;
-  errorMsg?: null | string;
+  cardList?: Character[];
+  isLoading?: boolean;
   charactersOnPage?: number;
   currentPage?: number;
 }

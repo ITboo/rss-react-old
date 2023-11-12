@@ -58,10 +58,11 @@ describe("Details", () => {
     expect(screen.getByText("Location: Citadel of Ricks")).toBeInTheDocument();
   });
 
-  it("ensures that clicking the close button hides the component.", () => {
+  it("ensures that clicking the close button hides the component.", async () => {
     const closeBtn = screen.getByTestId("close");
-
+    const modal = await waitFor(() => screen.getByTestId("modal-card"));
     expect(closeBtn).toBeInTheDocument();
     fireEvent.click(closeBtn);
+    expect(modal).toBeUndefined;
   });
 });

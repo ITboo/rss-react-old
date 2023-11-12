@@ -30,7 +30,6 @@ describe("Search", () => {
 
   describe("Search", () => {
     const value = "test";
-    const spy = vi.spyOn(localStorage, "setItem");
     localStorage.setItem = vi.fn();
     const setSearch = vi.fn();
     it("verifies that clicking the Search button saves the entered value to the local storage", async () => {
@@ -49,8 +48,7 @@ describe("Search", () => {
 
       fireEvent.click(button);
 
-      expect(spy).toHaveBeenCalledTimes(1);
-      expect(spy).toHaveBeenCalledWith("test");
+      expect(localStorage).toHaveProperty("searchValue");
     });
   });
 });

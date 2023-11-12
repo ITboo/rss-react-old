@@ -33,6 +33,4 @@ describe("Card List", () => {
     expect(fifthCard).toBeInTheDocument();
     expect(sixthCard).toBeInTheDocument();
   });
-
-  it("checks that an appropriate message is displayed if no cards are present.", () => {});
 });

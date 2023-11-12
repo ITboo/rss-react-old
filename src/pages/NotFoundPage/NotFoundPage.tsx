@@ -1,7 +1,7 @@
 import "./NotFoundPage.css";
 function NotFoundPage() {
   return (
-    <main className="main not-found">
+    <main className="main not-found" data-testid="not-found">
       <h2 className="">Ooops, sorry! Nothing is found...</h2>
       <img
         className="not-found__img"
