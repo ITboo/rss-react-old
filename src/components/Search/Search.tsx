@@ -29,6 +29,7 @@ function Search({ setSearch }: SearchProps) {
       <input
         id="search"
         className="search"
+        data-testid="search"
         type="text"
         value={inputValue}
         placeholder="Search..."

@@ -5,7 +5,7 @@ import { BrowserRouter } from "react-router-dom";
 import NotFoundPage from "../pages/NotFoundPage/NotFoundPage";
 
 describe("NotFound Page", () => {
-  it("renders Not found page", () => {
+  it("ensures that the 404 page is displayed when navigating to an invalid route.", () => {
     render(
       <BrowserRouter>
         <NotFoundPage />
