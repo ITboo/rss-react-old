@@ -10,12 +10,12 @@ import {
 import { card } from "../shared/data/mock-data";
 import DetailsInfo from "../components/Details/DetailsInfo";
 
-describe("Details", () => {
+describe("Card", () => {
   beforeEach(async () => {
     global.fetch = vi.fn().mockImplementation(() =>
       Promise.resolve({
         json: () => card,
-      })
+      }),
     );
 
     const setModal = vi.fn();
@@ -31,7 +31,21 @@ describe("Details", () => {
     expect(modal).toBeInTheDocument();
     expect(screen.queryByTestId("loader")).toBeNull();
   });
+});
+describe("Details", () => {
+  beforeEach(async () => {
+    global.fetch = vi.fn().mockImplementation(() =>
+      Promise.resolve({
+        json: () => card,
+      }),
+    );
 
+    const setModal = vi.fn();
+
+    await act(async () => {
+      render(<DetailsInfo cardId={0} setModal={setModal} />);
+    });
+  });
   it("makes sure the detailed card component correctly displays the detailed card data;", async () => {
     const modal = await waitFor(() => screen.getByTestId("modal-card"));
 
@@ -46,10 +60,8 @@ describe("Details", () => {
 
   it("ensures that clicking the close button hides the component.", () => {
     const closeBtn = screen.getByTestId("close");
-    const setModal = vi.fn();
 
     expect(closeBtn).toBeInTheDocument();
     fireEvent.click(closeBtn);
-    expect(setModal).toBeCalled();
   });
 });

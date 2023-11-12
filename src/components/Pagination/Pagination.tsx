@@ -1,4 +1,5 @@
 import { Dispatch, SetStateAction } from "react";
+import { useNavigate } from "react-router-dom";
 import "./Pagination.css";
 
 type PaginationProps = {
@@ -11,6 +12,7 @@ type PaginationProps = {
 const Pagination = (props: PaginationProps) => {
   const { totalPosts, postsPerPage, setCurrentPage } = props;
   const pages = [];
+  const navigate = useNavigate();
   for (let i = 1; i <= Math.ceil(totalPosts / postsPerPage); i++) {
     pages.push(i);
   }
@@ -20,7 +22,10 @@ const Pagination = (props: PaginationProps) => {
         return (
           <button
             key={index}
-            onClick={() => setCurrentPage(page)}
+            onClick={() => {
+              navigate(`/${page}`);
+              setCurrentPage(page);
+            }}
             className="pagination__btn"
           >
             {page}

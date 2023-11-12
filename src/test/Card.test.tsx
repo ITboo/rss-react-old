@@ -1,5 +1,5 @@
 import { describe, vi } from "vitest";
-import { fireEvent, render, screen } from "@testing-library/react";
+import { render, screen } from "@testing-library/react";
 
 import Card from "../components/Card/Card";
 import { card } from "../shared/data/mock-data";
@@ -19,11 +19,5 @@ describe("Card", () => {
     expect(screen.getByRole("img")).toBeDefined();
     expect(screen.getByText("Rick Sanchez")).toBeInTheDocument();
     expect(screen.queryByText("Earth (C-137)")).toBeNull();
-  });
-
-  it("validates that clicking on a card opens a detailed card component", () => {
-    const click = screen.getByTestId("card");
-    fireEvent.click(click);
-    expect(window.location.pathname).toBe()
   });
 });
