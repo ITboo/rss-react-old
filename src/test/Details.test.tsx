@@ -8,7 +8,7 @@ import {
 } from "@testing-library/react";
 
 import { card } from "../shared/data/mock-data";
-import DetailsInfo from "../components/Details/DetailsInfo";
+import DetailsInfo from "../components/Details/DetailsCard";
 
 describe("Card", () => {
   beforeEach(async () => {

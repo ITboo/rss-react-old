@@ -1,5 +1,6 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 
+import Layout from "../shared/Layout/Layout";
 import HomePage from "../pages/HomePage/HomePage";
 import AboutPage from "../pages/AboutPage/AboutPage";
 import NotFoundPage from "../pages/NotFoundPage/NotFoundPage";
@@ -7,7 +8,6 @@ import NotFoundPage from "../pages/NotFoundPage/NotFoundPage";
 import ErrorBoundary from "./providers/ErrorBoundary";
 
 import "./styles/App.css";
-import Layout from "../shared/Layout/Layout";
 
 function App() {
   return (

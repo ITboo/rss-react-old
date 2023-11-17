@@ -24,7 +24,6 @@ export interface CharactersProps {
 }
 export interface CharacterProps {
   data: Character;
-  openModal: (id: number) => void;
 }
 
 export interface CharacterData {

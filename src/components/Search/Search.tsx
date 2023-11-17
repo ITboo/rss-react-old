@@ -1,43 +1,30 @@
-import { ChangeEvent, FormEvent, useEffect, useRef, useState } from "react";
-import { SearchProps } from "../../app/types/types";
+import { useState } from "react";
+import { useAppDispatch, useAppSelector } from "../../app/redux/hooks/hooks";
+import { setSearchValue } from "../../app/redux/slices/searchSlice";
 
 import "./Search.css";
 
-function Search({ setSearch }: SearchProps) {
-  const [inputValue, setInputValue] = useState(
-    localStorage.getItem("searchValue") ?? "",
-  );
-  const inputRef = useRef(inputValue);
+function Search() {
+  const dispatch = useAppDispatch();
+  const searchValue = useAppSelector((state) => state.search.value);
+  const [value, setValue] = useState(searchValue);
 
-  const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    localStorage.setItem("searchValue", inputValue ?? "");
-    setSearch(inputValue);
-  };
-
-  useEffect(() => {
-    inputRef.current = inputValue;
-  }, [inputValue]);
-
-  useEffect(() => {
-    return () => {
-      localStorage.setItem("searchValue", inputRef.current);
-    };
-  }, []);
   return (
-    <form onSubmit={handleSubmit}>
+    <form
+      onSubmit={(e) => {
+        e.preventDefault();
+        dispatch(setSearchValue(value));
+      }}
+    >
       <input
         id="search"
         className="search"
-        data-testid="search"
         type="text"
-        value={inputValue}
         placeholder="Search..."
-        onChange={(e: ChangeEvent<HTMLInputElement>) =>
-          setInputValue(e.target.value)
-        }
+        data-testid="search"
+        onChange={(e) => setValue(e.target.value)}
+        value={value}
       />
-      <button className="search-btn">Search</button>
     </form>
   );
 }

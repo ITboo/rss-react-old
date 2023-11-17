@@ -1,18 +1,21 @@
+import ReactDOM from "react-dom";
 import { ReactElement } from "react";
-
-import "./Details.css";
+import { useAppDispatch } from "../../app/redux/hooks/hooks";
+import { closeModal } from "../../app/redux/slices/detailsSlice";
 
 export interface DetailsProps {
   children: ReactElement;
-  setModal: () => void;
 }
 
-function Details({ children, setModal }: DetailsProps) {
-  return (
-    <div className="modal">
-      <div className="modal__overlay" onClick={setModal}></div>
+function Details({ children }: DetailsProps) {
+  const dispatch = useAppDispatch();
+
+  return ReactDOM.createPortal(
+    <div className="modal" data-testid="modal">
+      <div className="overlay" onClick={() => dispatch(closeModal())}></div>
       <div className="modal__wrapper">{children}</div>
-    </div>
+    </div>,
+    document.body,
   );
 }
 
