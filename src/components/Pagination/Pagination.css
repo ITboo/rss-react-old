@@ -1,0 +1,39 @@
+.pagination__wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+}
+
+.pagination {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    margin-top: 1rem;
+    margin-bottom: 20px;
+    gap: 5px;
+}
+
+.pagination__btn {
+    font-family: inherit;
+    font-weight: 600;
+    font-size: 16px;
+    margin: 0 10px;
+    padding: 10px;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    background: transparent;
+    color: #000000;
+    background-color: rgb(90, 155, 177);
+    border: solid 3px;
+    border-color: greenyellow;
+}
+
+.pagination__btn:hover {
+    font-weight: 900;
+    border-color: rgb(90, 155, 177);
+    background: greenyellow;
+    color: #101010;
+}
