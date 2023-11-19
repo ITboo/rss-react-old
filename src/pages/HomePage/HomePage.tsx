@@ -11,6 +11,7 @@ import { Character } from "../../app/types/types";
 import { useDispatch } from "react-redux";
 import { useEffect } from "react";
 import { setLoader } from "../../app/redux/slices/loaderSlice";
+import Pagination from "../../components/Pagination/Pagination";
 
 function HomePage() {
   const searchValue = useAppSelector((state) => state.search.value);
@@ -39,11 +40,14 @@ function HomePage() {
       {isError ? (
         <div>...</div>
       ) : (
-        <section className="cards">
-          {currentData.map((card: Character) => (
-            <Card key={card.id} data={card} />
-          ))}
-        </section>
+        <>
+          <Pagination />
+          <section className="cards">
+            {currentData.map((card: Character) => (
+              <Card key={card.id} data={card} />
+            ))}
+          </section>
+        </>
       )}
       {isModalOpen && (
         <Details>

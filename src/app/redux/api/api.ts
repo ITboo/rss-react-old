@@ -10,10 +10,11 @@ export const api = createApi({
   }),
   endpoints: (build) => ({
     getCharacterById: build.query<Character, number>({
-      query: (id: number) => `/${id}`,
+      query: (id: number) => `/character/${id}`,
     }),
     getCharacters: build.query<Character[], string>({
-      query: (name: string) => `/?name=${name}`,
+      query: (name: string) => `/character/?name=${name}`,
+
       transformResponse: (res: CharacterData) => res.results,
     }),
   }),
