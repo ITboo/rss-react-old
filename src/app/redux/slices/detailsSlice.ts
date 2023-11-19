@@ -26,5 +26,4 @@ export const detailsSlice = createSlice({
 });
 
 export const { openModal, closeModal } = detailsSlice.actions;
-
 export default detailsSlice.reducer;

@@ -8,22 +8,35 @@ import Search from "../../components/Search/Search";
 import Loader from "../../shared/Loader/Loader";
 
 import { Character } from "../../app/types/types";
+import { useDispatch } from "react-redux";
+import { useEffect } from "react";
+import { setLoader } from "../../app/redux/slices/loaderSlice";
 
 function HomePage() {
   const searchValue = useAppSelector((state) => state.search.value);
   const isModalOpen = useAppSelector((state) => state.modal.isOpen);
+  const showLoader = useAppSelector((state) => state.loader.searchLoader);
+
   const {
     currentData = [],
     isFetching,
     isError,
   } = useGetCharactersQuery(searchValue);
 
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    if (isFetching) {
+      dispatch(setLoader({ loader: "search", value: true }));
+    } else {
+      dispatch(setLoader({ loader: "search", value: false }));
+    }
+  }, [dispatch, isFetching]);
+
   return (
     <main>
       <Search />
-      {isFetching ? (
-        <Loader />
-      ) : isError ? (
+      {isError ? (
         <div>...</div>
       ) : (
         <section className="cards">
@@ -37,6 +50,7 @@ function HomePage() {
           <DetailsCard />
         </Details>
       )}
+      {showLoader && <Loader />}
     </main>
   );
 }
