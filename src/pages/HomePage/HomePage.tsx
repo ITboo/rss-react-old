@@ -26,7 +26,7 @@ function HomePage() {
       ) : isError ? (
         <div>...</div>
       ) : (
-        <section>
+        <section className="cards">
           {currentData.map((card: Character) => (
             <Card key={card.id} data={card} />
           ))}

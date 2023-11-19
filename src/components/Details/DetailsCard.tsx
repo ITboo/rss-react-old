@@ -5,24 +5,26 @@ import { closeModal } from "../../app/redux/slices/detailsSlice";
 import Loader from "../../shared/Loader/Loader";
 
 function DetailsCard() {
-  const dispatch = useAppDispatch();
   const cardId = useAppSelector((state) => state.modal.id);
   const { currentData, isFetching, isError } = useGetCharacterByIdQuery(cardId);
+
+  const dispatch = useAppDispatch();
 
   return isFetching ? (
     <Loader />
   ) : isError ? (
-    <div className="error">Failed to fetch. Click on the background!</div>
+    <div className="error">Failed</div>
   ) : currentData ? (
     <>
       <div className="card modal-card" data-testid="modal-card">
-        <div
-          className="card__photo"
-          style={{ backgroundImage: `url(${currentData.image})` }}
-        ></div>
+        <img
+          src={currentData.image}
+          alt={currentData.name}
+          className="card__img"
+        />
         <div className="card__info">
-          <div className="card__species">{currentData.species}</div>
           <div className="card__title">{currentData.name}</div>
+          <div className="card__species">{currentData.species}</div>
           <div>
             <span>Status: </span>
             {currentData.status}
