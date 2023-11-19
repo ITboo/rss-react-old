@@ -4,6 +4,8 @@ import { closeModal } from "../../app/redux/slices/detailsSlice";
 
 import Loader from "../../shared/Loader/Loader";
 
+import "./Details.css";
+
 function DetailsCard() {
   const cardId = useAppSelector((state) => state.modal.id);
   const { currentData, isFetching, isError } = useGetCharacterByIdQuery(cardId);
@@ -16,13 +18,20 @@ function DetailsCard() {
     <div className="error">Failed</div>
   ) : currentData ? (
     <>
-      <div className="card modal-card" data-testid="modal-card">
+      <div className="details-card" data-testid="modal-card">
+        <div
+          className="close-btn"
+          onClick={() => dispatch(closeModal())}
+          data-testid="close"
+        >
+          ✖
+        </div>
         <img
           src={currentData.image}
           alt={currentData.name}
-          className="card__img"
+          className="details-card__photo"
         />
-        <div className="card__info">
+        <div className="details__info">
           <div className="card__title">{currentData.name}</div>
           <div className="card__species">{currentData.species}</div>
           <div>
@@ -42,13 +51,6 @@ function DetailsCard() {
             {currentData.location.name}
           </div>
         </div>
-      </div>
-      <div
-        className="close"
-        onClick={() => dispatch(closeModal())}
-        data-testid="close"
-      >
-        ✖
       </div>
     </>
   ) : (
