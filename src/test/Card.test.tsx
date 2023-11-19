@@ -2,7 +2,7 @@ import { describe, vi } from "vitest";
 import { render, screen } from "@testing-library/react";
 
 import Card from "../components/Card/Card";
-import { card } from "../shared/data/mock-data";
+import { card } from "../data/mock-data";
 
 describe("Card", () => {
   beforeEach(async () => {

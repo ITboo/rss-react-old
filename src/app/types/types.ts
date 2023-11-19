@@ -30,10 +30,8 @@ export interface CharacterData {
   info?: {
     count: number;
     pages: number;
-    next: string | null;
-    prev: string | null;
   };
-  results?: Character[];
+  results: Character[];
 }
 
 export interface SearchProps {

@@ -7,7 +7,7 @@ import {
   fireEvent,
 } from "@testing-library/react";
 
-import { card } from "../shared/data/mock-data";
+import { card } from "../data/mock-data";
 import DetailsInfo from "../components/Details/DetailsCard";
 
 describe("Card", () => {

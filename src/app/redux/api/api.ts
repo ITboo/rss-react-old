@@ -1,6 +1,6 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 
-import { Character } from "../../types/types";
+import { Character, CharacterData } from "../../types/types";
 import { API_URL } from "../../constants/constants";
 
 export const api = createApi({
@@ -14,6 +14,7 @@ export const api = createApi({
     }),
     getCharacters: build.query<Character[], string>({
       query: (name: string) => `/?name=${name}`,
+      transformResponse: (res: CharacterData) => res.results,
     }),
   }),
 });

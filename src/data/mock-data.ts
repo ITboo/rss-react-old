@@ -1,4 +1,4 @@
-import { Character } from "../../app/types/types";
+import { Character } from "../app/types/types";
 
 export const card: Character = {
   id: 1,

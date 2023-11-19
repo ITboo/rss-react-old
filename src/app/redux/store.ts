@@ -1,13 +1,18 @@
 import { configureStore } from "@reduxjs/toolkit";
 
 import searchReducer from "./slices/searchSlice";
-import modalReducer from "./slices/detailsSlice";
+import detailsReducer from "./slices/detailsSlice";
+
+import { api } from "./api/api";
 
 export const store = configureStore({
   reducer: {
+    [api.reducerPath]: api.reducer,
     search: searchReducer,
-    modal: modalReducer,
+    modal: detailsReducer,
   },
+  middleware: (getDefaultMiddleware) =>
+    getDefaultMiddleware().concat(api.middleware),
 });
 
 export type RootState = ReturnType<typeof store.getState>;
