@@ -9,6 +9,8 @@ import {
 
 import { card } from "../data/mock-data";
 import DetailsInfo from "../components/Details/DetailsCard";
+import { Provider } from "react-redux";
+import { store } from "../app/redux/store";
 
 describe("Card", () => {
   beforeEach(async () => {
@@ -18,10 +20,12 @@ describe("Card", () => {
       }),
     );
 
-    const setModal = vi.fn();
-
     await act(async () => {
-      render(<DetailsInfo cardId={0} setModal={setModal} />);
+      render(
+        <Provider store={store}>
+          <DetailsInfo />
+        </Provider>,
+      );
     });
   });
 
@@ -40,10 +44,12 @@ describe("Details", () => {
       }),
     );
 
-    const setModal = vi.fn();
-
     await act(async () => {
-      render(<DetailsInfo cardId={0} setModal={setModal} />);
+      render(
+        <Provider store={store}>
+          <DetailsInfo />
+        </Provider>,
+      );
     });
   });
   it("makes sure the detailed card component correctly displays the detailed card data;", async () => {

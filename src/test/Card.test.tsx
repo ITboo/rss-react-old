@@ -1,13 +1,18 @@
-import { describe, vi } from "vitest";
+import { describe } from "vitest";
 import { render, screen } from "@testing-library/react";
 
 import Card from "../components/Card/Card";
 import { card } from "../data/mock-data";
+import { Provider } from "react-redux";
+import { store } from "../app/redux/store";
 
 describe("Card", () => {
   beforeEach(async () => {
-    const openModal = vi.fn();
-    render(<Card data={card} openModal={openModal} />);
+    render(
+      <Provider store={store}>
+        <Card data={card} />;
+      </Provider>,
+    );
   });
 
   it("renders a card", () => {

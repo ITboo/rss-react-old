@@ -2,11 +2,17 @@ import { describe, it } from "vitest";
 import { render, screen, act, waitFor } from "@testing-library/react";
 
 import HomePage from "../pages/HomePage/HomePage";
+import { Provider } from "react-redux";
+import { store } from "../app/redux/store";
 
 describe("Card List", () => {
   beforeEach(async () => {
     await act(async () => {
-      render(<HomePage />);
+      render(
+        <Provider store={store}>
+          <HomePage />
+        </Provider>,
+      );
     });
   });
 
