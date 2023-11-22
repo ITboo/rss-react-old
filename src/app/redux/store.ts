@@ -12,7 +12,7 @@ export const store = configureStore({
   reducer: {
     [api.reducerPath]: api.reducer,
     search: searchReducer,
-    modal: detailsReducer,
+    details: detailsReducer,
     loader: loaderReducer,
     pagination: paginationReducer,
     limit: limitReducer,

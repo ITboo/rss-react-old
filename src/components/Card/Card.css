@@ -1,12 +1,4 @@
-.cards {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    margin: 0 auto 10px;
-    width: 790px;
-    gap: 10px;
-    padding-top: 10px;
-}
+
 
 .card {
     text-align: center;

@@ -1,7 +1,7 @@
 import { describe, it } from "vitest";
 import { render, screen, act, waitFor } from "@testing-library/react";
 
-import HomePage from "../pages/HomePage/HomePage";
+import HomePage from "../pages/MainPage/MainPage";
 import { Provider } from "react-redux";
 import { store } from "../app/redux/store";
 

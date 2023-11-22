@@ -1,20 +1,15 @@
 import { createSlice } from "@reduxjs/toolkit";
-import type { PayloadAction } from "@reduxjs/toolkit";
+import { getUserQuery } from "../../utils/localStorage";
 
-interface SearchState {
-  value: string;
-}
+const query = getUserQuery();
+const initialState = { searchValue: query === null ? "" : query };
 
-const initialState: SearchState = {
-  value: "",
-};
-
-export const searchSlice = createSlice({
-  name: "search",
+const searchSlice = createSlice({
+  name: "searchValue",
   initialState,
   reducers: {
-    setSearchValue: (state, action: PayloadAction<string>) => {
-      state.value = action.payload;
+    setSearchValue: (state, action) => {
+      state.searchValue = action.payload;
     },
   },
 });

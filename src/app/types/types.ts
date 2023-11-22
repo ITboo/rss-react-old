@@ -1,21 +1,30 @@
 export interface Character {
   id: number;
   name: string;
-  status: "Dead" | "Alive" | "unknown";
-  species: string;
-  type: string;
-  gender: "Female" | "Male" | "Genderless" | "unknown";
-  origin: CharacterLocation;
-  location: CharacterLocation;
+  status: string;
+  type?: string;
+  origin?: {
+    name: string;
+    url: string;
+  };
+  location?: {
+    name: string;
+    url: string;
+  };
   image: string;
-  episode: string[];
-  url: string;
-  created: string;
+  episode?: string[];
+  gender: string;
+  species?: string;
+  created?: string;
+  url?: string;
 }
 
-export interface CharacterLocation {
+export interface CharacterCardProps {
   name: string;
-  url: string;
+  image: string;
+  index?: number;
+  page: string | number;
+  id: number;
 }
 
 export interface CharactersProps {

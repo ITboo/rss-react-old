@@ -1,22 +1,17 @@
-import { createSlice, PayloadAction, Slice } from "@reduxjs/toolkit";
+import { createSlice } from "@reduxjs/toolkit";
 
-export interface PerPageState {
-  perPage: string;
-}
+const initialState = { charactersOnPage: 6 };
 
-const initialState: PerPageState = {
-  perPage: "6",
-};
-
-export const limitSlice: Slice<PerPageState> = createSlice({
-  name: "search",
+const charactersOnPageSlice = createSlice({
+  name: "charactersOnPage",
   initialState,
   reducers: {
-    setItemsPerPage: (state: PerPageState, actions: PayloadAction<string>) => {
-      state.perPage = actions.payload;
+    setCharactersOnPage: (state, action) => {
+      state.charactersOnPage = action.payload;
     },
   },
 });
 
-export const { setItemsPerPage } = limitSlice.actions;
-export default limitSlice.reducer;
+export const { setCharactersOnPage } = charactersOnPageSlice.actions;
+
+export default charactersOnPageSlice.reducer;

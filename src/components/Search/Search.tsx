@@ -1,48 +1,64 @@
-import { useEffect, useRef, useState } from "react";
-import { useAppDispatch, useAppSelector } from "../../app/redux/hooks/hooks";
+import { useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { useEffect } from "react";
+
+import { useAppSelector } from "../../app/redux/hooks/hooks";
 import { setSearchValue } from "../../app/redux/slices/searchSlice";
+
+import { getUserQuery, setUserQuery } from "../../app/utils/localStorage";
 
 import "./Search.css";
 
-function Search() {
-  const searchValue = useAppSelector((state) => state.search.value);
-  const [value, setValue] = useState(searchValue);
-
-  const inputRef = useRef<HTMLInputElement>(null);
+const Search = () => {
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   useEffect(() => {
-    if (inputRef.current) inputRef.current.focus();
+    let query = getUserQuery();
+    if (query === null) query = "";
+
+    navigate(`/search/${query}`);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  const handleOnChange: React.ChangeEventHandler<HTMLInputElement> = (e) => {
-    setValue(e.target.value);
+  const search = useAppSelector((state) => {
+    return state.search.searchValue;
+  });
+
+  const onUpdateSearch = (event: React.ChangeEvent<HTMLInputElement>): void => {
+    const query = event.target.value.trim();
+    dispatch(setSearchValue(query));
   };
 
-  const dispatch = useAppDispatch();
-  const handleOnClick: React.MouseEventHandler<HTMLButtonElement> = () => {
-    dispatch(setSearchValue(value));
+  const onSubmit = (event: React.MouseEvent): void => {
+    event.preventDefault();
+    setUserQuery(search);
+    navigate(`/search/${search}`);
   };
 
   return (
-    <form
-      onSubmit={(e) => {
-        e.preventDefault();
-        dispatch(setSearchValue(value));
-      }}
-    >
-      <input
-        id="search"
-        className="search"
-        type="text"
-        placeholder="Search..."
-        data-testid="search"
-        onChange={handleOnChange}
-        value={value}
-        ref={inputRef}
-      />
-      <button onClick={handleOnClick}>Search</button>
-    </form>
+    <>
+      <div className="search-form__wrapper">
+        <form className="search-form">
+          <input
+            type="text"
+            data-testid="my-input"
+            placeholder="Search"
+            value={search}
+            onChange={onUpdateSearch}
+          />
+          <button
+            className="search-btn"
+            onClick={(e) => {
+              onSubmit(e);
+            }}
+          >
+            Search
+          </button>
+        </form>
+      </div>
+    </>
   );
-}
+};
 
 export default Search;

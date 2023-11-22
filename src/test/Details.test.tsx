@@ -8,7 +8,7 @@ import {
 } from "@testing-library/react";
 
 import { card } from "../data/mock-data";
-import DetailsInfo from "../components/Details/DetailsCard";
+import DetailsInfo from "../components/Details/Details";
 import { Provider } from "react-redux";
 import { store } from "../app/redux/store";
 

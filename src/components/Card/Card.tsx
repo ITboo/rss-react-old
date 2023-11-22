@@ -1,26 +1,18 @@
-import { useAppDispatch } from "../../app/redux/hooks/hooks";
-import { openModal } from "../../app/redux/slices/detailsSlice";
+import { Link } from "react-router-dom";
+import { CharacterCardProps } from "../../app/types/types";
 
-import { CharacterProps } from "../../app/types/types";
 import "./Card.css";
 
-function Card({ data }: CharacterProps) {
-  const { id, image, species, name } = data;
-  const dispatch = useAppDispatch();
-
+const CharacterCard = (props: CharacterCardProps) => {
+  const { name, image, page, id } = props;
   return (
-    <div
-      className="card"
-      onClick={() => dispatch(openModal(id))}
-      data-testid="card"
-    >
-      <img src={image} alt={name} className="card__img" />
-      <div className="card__info">
+    <Link to={`/page=${page}/characterId=${id}`}>
+      <div className="card">
+        <img className="card__img" src={image} alt={name} />
         <div className="card__title">{name}</div>
-        <div className="card__species">{species}</div>
       </div>
-    </div>
+    </Link>
   );
-}
+};
 
-export default Card;
+export default CharacterCard;
