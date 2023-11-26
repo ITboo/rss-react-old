@@ -1,0 +1,19 @@
+.pagination{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    list-style: none;
+    gap: 10px;
+    cursor: pointer;
+}
+
+.active{
+    background-color: yellowgreen;
+}
+
+.next,
+.prev{
+    border: solid 2px yellowgreen;
+    padding: 0 3px;
+}

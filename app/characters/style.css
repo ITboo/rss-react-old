@@ -1,0 +1,19 @@
+.info {
+    text-align: center;
+}
+
+.info-count {
+    color: yellowgreen;
+    font-weight: bold;
+}
+
+.info-text {
+    color: black;
+}
+
+.result {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+}

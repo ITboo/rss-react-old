@@ -1,0 +1,14 @@
+.header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.header__logo{
+width: 300px;
+height: 120px;
+}
+.header__menu{
+    display: flex;
+    gap: 20px;
+    text-transform: uppercase;
+}
